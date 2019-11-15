@@ -1,0 +1,7 @@
+[15-Dec-2014 23:19:17 America/Chicago] PHP Parse error:  syntax error, unexpected '"' .' (T_CONSTANT_ENCAPSED_STRING) in /home2/mahesh99/public_html/sem/ex1.php on line 248
+[15-Dec-2014 23:20:02 America/Chicago] PHP Parse error:  syntax error, unexpected '"' .' (T_CONSTANT_ENCAPSED_STRING) in /home2/mahesh99/public_html/sem/ex1.php on line 248
+[15-Dec-2014 23:28:44 America/Chicago] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /home2/mahesh99/public_html/sem/ex1.php on line 265
+[15-Dec-2014 23:28:56 America/Chicago] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /home2/mahesh99/public_html/sem/ex1.php on line 278
+[15-Dec-2014 23:29:11 America/Chicago] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /home2/mahesh99/public_html/sem/ex1.php on line 278
+[15-Dec-2014 23:29:13 America/Chicago] PHP Parse error:  syntax error, unexpected 'break' (T_BREAK) in /home2/mahesh99/public_html/sem/ex1.php on line 287
+[15-Dec-2014 23:31:31 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home2/mahesh99/public_html/sem/ex1.php on line 523

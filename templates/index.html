@@ -1,0 +1,247 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<script>
+function checkvalue(val)
+{
+    if(val==="OTHERS")
+       document.getElementById('languagebox').style.display='block';
+    else
+       document.getElementById('languagebox').style.display='none'; 
+}
+
+</script>
+<style>
+body {
+         background-image: url("{% static 'background.jpg' %}");
+		 background-size:cover;
+     }
+@font-face{
+            font-family:BrandonText-Regular;
+			src: url("BrandonText-Regular.otf");
+		}
+@font-face{
+            font-family:BrandonText-Medium;
+			src: url("BrandonText-Medium.otf");
+		}
+@font-face{
+            font-family:BrandonText-Bold;
+			src: url("BrandonText-Bold.otf");
+		}
+@font-face{
+            font-family:HelveticaNeue-Light;
+			src: url("HelveticaNeue-Light.ttf");
+		}
+@font-face{
+            font-family:Arial;
+			src: url("Arial.ttf");
+         }	 
+
+#mmm{
+       margin-left:10%;
+	   margin-top:1.5%;
+	 }
+	
+
+.search-container {
+     width:40%;
+	 
+	 margin-top:10%;
+     margin-left:27%;
+	 background: #ddd;
+	 
+	
+	 padding-top: 0.5%;
+	 padding-left: 0.2%;
+	 padding-bottom: 0.5%;
+	 padding-right: 0.5%;
+	 }
+.search-container input{
+     width:100%;
+	 }
+
+.search-container button {
+  float: center;
+  padding: 1% 1%;
+ 
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.search-container button:hover {
+  background: #ccc;
+  
+ }
+ 
+ 
+ 
+ #typeofmood{
+              			font:1vw BrandonText-Regular;
+						margin-left:17%;
+						}
+ 
+ .box{
+               margin-left:28%;
+               margin-top:1%;
+			}
+#selmood{
+           margin-left:.5%;
+		   border-radius:10%;
+		   }
+		   
+#selmood:hover{
+           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+		 
+		  }
+
+/*.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+
+.box select {
+  background-color: #0563af;
+  color: white;
+  padding:0.5%;
+  border: none;
+  font-size: 100%;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+		  
+#option:hover{ font-size:120%;
+                transition:0.2s;
+				}
+    
+#sellang{
+           margin-left:.5%;
+		   border-radius:10%;
+		   }
+		   
+
+			
+#language{
+            margin-left: 5.5%;
+			font:1vw BrandonText-Regular;
+         }
+		 
+#submit{
+         margin-left:39%;
+         margin-top:2%;
+		}
+		
+#lastdiv{
+           margin-top:15%;
+		   background-color:black;
+
+		 }
+#last{
+              color:white;
+			 }
+			 
+#visual{
+              color:white;
+			 }
+		
+ ul.pagination {  
+    display: inline-block;  
+    padding: 0;  
+    margin: 0;  
+}  
+ul.pagination li {display: inline;}  
+ul.pagination li a {
+      
+    color: black;  
+    float: left;  
+    padding: 8px 16px;  
+    font-size: 100%;
+    text-decoration: none;	
+    text-underline-position: under;
+}  
+  ul li a {
+  transform: scale(1);
+  transition: all 0.3s ease-in-out 0.2s;
+}
+ul li:hover a{
+  transform: scale(1.2);
+  transition: all 0.1s ease-in-out 0.1s;
+}
+
+#languagebox{
+       margin-left:43.5%;
+	   }
+	  
+#getrec{
+          margin-left:4%;
+          padding: 0.5%;
+		  border-radius:10%;
+		  transition-duration: 0.4s;
+		  background-color:#03FCF7;
+		  color:black;
+ }		  
+#getrec:hover{
+           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+		  
+		  }
+		  
+#database{ color:white;
+           font:1.1vw BrandonText-Bold;
+		   margin-left:60%;
+		   margin-top:-3%;
+		 }
+            
+</style>
+</head>
+<title>MUSIC MAKES MOOD
+</title>
+<body>
+<div><img id="mmm" src="mmm.png" height="10%" width="80%" title="MUSIC MAKES MOOD"></img>
+<form action="{% url 'showres' %}" method="POST">
+    {% csrf_token %}
+<div class="box">
+	  <span id="typeofmood">TYPE OF MOOD<text style="color:red">* </text> 
+	  <select id="selmood" name="searchbox" required>
+	    <option value=""><text id="option">SELECT</text></option>
+	    <option value="Sensual"><text id="option">Sensual</text></option>
+		<option value="Fiery"><text id="option">Fiery</text></option>
+		<option value="Sentimental"><text id="option">Sentimental</text></option>
+		<option value="Witty"><text id="option">Witty</text></option>
+		<option value="Silly"><text id="option">Silly</text></option>
+		<option value="Rollicking"><text id="option">Rollicking</text></option>
+		<option value="Wistful"><text id="option">Wistful</text></option>
+		<option value="Fun"><text id="option">Fun</text></option>
+		<option value="Joyous"><text id="option">Joyous</text></option>
+		<option value="Rousing"><text id="option">Rousing</text></option>
+		<option value="Theatrical"><text id="option">Theatrical</text></option>
+		<option value="Druggy"><text id="option">Druggy</text></option>
+		<option value="Confident"><text id="option">Confident</text></option>
+		<option value="Volatile"><text id="option">Volatile</text></option>
+	  </select>
+	 </span>
+	 
+	
+
+</div>
+<div id="submit">
+   <input type="submit" value="GET RECOMMENDATIONS" id="getrec"></input>
+</div>
+</form>
+<div id="lastdiv">
+<span><ul class="pagination">  
+  <li><a class="active" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1FBlWqaQltlaZ538_pXnfF0GFg6Ohrw74chUX-hgi9G8%2Fedit%3Ffbclid%3DIwAR21rveaA4GDwfHzPtL_yZIhJHXaP2iAXdq8CfZKgb-Bx4khArl0xEWGPk8%23slide%3Did.g35f391192_04&h=AT0uYCpGHDMnzncpLql6wyfCBVd08cSWjkrVWSfmmNLoYfKXfzd2dt56JR29pA6YasiRgZunW7nm0oDcdBf96kIPa6SUIT8WyXr6HGNecfRzc8Zm2_eU1wdu0bDwtDTD3njhKw"><b><text id="last" style="font:1.1vw BrandonText-Bold;">ABOUT THE PROJECT</text></b></a></li>  
+  <li><a href="team.htm"><text id="last" style="font:1.1vw BrandonText-Bold;">TEAM MEMBERS</text></a></li> 
+  <li><a href="country.html"><text id="visual" style="font:1.1vw BrandonText-Bold;">VISUALIZATION</text></a></li> 
+    
+</ul> 
+</span>
+<span id="database">DATABASE : &nbsp<a style="color:blue;" href="https://musicbrainz.org/"><u>MUSICBRAINZ</u></a></span> 
+</div>
+</body>
+</html>

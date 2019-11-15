@@ -1,0 +1,515 @@
+<html>
+<head>
+ 
+        <script type="text/javascript" src="d3.v3.min.js"></script>
+        <script src="topojson.v1.min.js"></script>
+    <script src="datamaps.world.min.js"></script>
+    
+</head>
+<head>
+
+<link rel="stylesheet" href="style.css">
+<title>Music Lens - About Us</title>
+</head>
+<body background="4.png">
+
+<div id="menu">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="ex1.php">Sparql</a></li>
+<li><a href="visualization.html">Visualization</a></li>
+<li><a href="about.html">About Us </a></li>
+</ul>
+</div>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+
+<div id="container" style="position: relative; width: 90%; height: 700px;"></div>
+   
+</script>
+<script type="text/javascript">
+
+function readNodeDetails(id){
+var raw_data= loadFile(id+".txt");
+var returned_String=textToJSONParser(raw_data);
+return JSON.parse(JSON.stringify(returned_String));
+}
+
+function loadFile(filename){
+  //alert("load file");
+  if (window.XMLHttpRequest){
+    xhttp=new XMLHttpRequest();
+    }
+  else{ //code for IE5 and 6
+    xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+  xhttp.open("GET",filename,false);
+  xhttp.send();
+  return xhttp.responseText;
+}
+
+function myCustomObject(){
+  var atr1 = null;
+  var atr2 = null;
+  var atr3  = null;
+}
+function textToJSONParser(data){
+ // console.log("Enter textToJSONParser");
+//remove all the tabs from the data
+ // alert("came here")
+  data = data.replace(/\t/g, ' ');
+  data = data.replace(/\r/g, '');
+  //split the recieved data into multiple rows
+  var split_Rows = data.split(/\n/g);
+  // extract the first row of the data to fetch the ROW HEADERS from the file
+  var first_Row=split_Rows[0].split(' ');
+  var final_Object = [];
+  for(var i=1; i< split_Rows.length;i++){
+    var new_Row = split_Rows[i].split(' ');  
+    if( new_Row.length >1){  //if the row is not empty
+      var interm_Object ={};
+      for(var j=0; j <first_Row.length;j++){
+        interm_Object[first_Row[j]] = new_Row[j]; //create object[key] =value  for the whole row
+      }
+      //console.log(interm_Object); 
+      final_Object.push(interm_Object); //add the create object for the particular row into the array
+    }
+  }
+  //console.log("Parsed text file :"+final_Object);
+  return final_Object;
+}
+function readData(){
+  var dataCollection = readNodeDetails("data3");
+  var dataArray = [];
+  for(var count=0;count<dataCollection.length;count++){
+     var temp = dataCollection[count];
+     var tempObj = new myCustomObject();
+     tempObj.atr1 = temp.attribute_1;
+     tempObj.atr2 = temp.attribute_2;
+     tempObj.atr3 = temp.attribute_3;
+     dataArray.push(tempObj);
+
+  }
+drawGraph(dataArray);
+}
+
+function drawGraph(dataArray){
+      
+       var countryName= "INDIA";
+       var country= countryName.substring(1,4).toUpperCase();
+      var c="IND";
+     var map = new Datamap({
+       scope: 'world',
+        element: document.getElementById('container'),
+        fills: {
+            POP: '#FDCD08',
+            ROCK: '#123456',
+            EDM: '#990000',
+            CLASSICAL: 'gray',
+           
+            defaultFill: 'black'
+        },
+     data: {
+            CHI: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            SCT:{
+                fillKey:'POP',
+                numberOfThings:2014
+            },
+            RUS:{
+                 fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              AZE: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            NIG:{
+               fillKey: 'ROCK',
+                numberOfThings: 2002
+              },
+              AUS: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              CHN: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+            ZAF: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            KEN: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            UGA: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+            COD: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            DZA: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            LBY: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            /*RMM: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },*/
+            MUS: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            SAU: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            TZA: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              FIJ: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              AUT: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              EGY: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BAN: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              GER: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              FIN: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              EST: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              FRA: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              BAR: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              COL: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BHU: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              CUB: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              CRC: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              CMR: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BIZ: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              BOT: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              GAM: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              DOM: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              BEL: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              ALG: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BER: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BEN: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              AND: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BUL: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              CYP: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              BLR: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              DEN: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              ANT: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              CGO: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              ALB: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BDI: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              AFG: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BRA: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              ESA: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              CAY: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              ANG: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              ARM: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              BAH: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              ECU: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              COM: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              ETH: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+              DMA: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+              CRO: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+              ARG: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              GEO: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+              BRU: {
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+             IND : {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            CAN: {
+                fillKey: 'ROCK',
+                numberOfThings: 10381
+            },
+            KOR:{
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            NOR:{
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+            PAK:{
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+            PRK:{
+                fillKey: 'POP',
+                numberOfThings: 1002
+            },
+            POR:{
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            GRL: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            /*RCH:{
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },*/
+            BOL: {
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            MLI: {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+            TUR: {
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            PHI:{
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+            CHL:{
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            JAP:{
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            SIN:{
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            ITA:{
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+            ISL:{
+                fillKey: 'EDM',
+                numberOfThings: 2002
+            },
+            INA:{
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            KUW:{
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+            NET:{
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            KGZ:{
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },
+            ESP:{
+                fillKey: 'CLASSICAL',
+                numberOfThings: 2002
+            },
+            ENG:{
+                fillKey: 'POP',
+                numberOfThings: 2002
+            },
+            USA:{
+                fillKey: 'POP',
+                numberOfThings: 12002
+            },
+            UK:{
+                fillKey: 'ROCK',
+                numberOfThings: 8002
+            },
+        }
+    });
+   
+ /*  var mapData={};
+   for(var i = 0; i < dataArray.length; i++) {
+  //  var obj = dataArray[i].atr3;
+    mapData[i] = dataArray[i].atr3;
+   
+ }
+ for (key in mapData) {
+  var data={};
+   data[key] = "red";
+   map.updateChoropleth(data);
+ }
+*/
+
+/*for (key in {
+                fillKey: 'ROCK',
+                numberOfThings: 2002
+            },map.options.data) {
+    var data = {};
+    data[key] = "red";
+    map.updateChoropleth(data);
+}
+*/
+        
+  var zoom = d3.behavior.zoom()
+.on("zoom",function() {
+map.svg.select("g").attr("transform","translate("+
+d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+map.svg.select("g").selectAll("circle")
+.attr("d", map.path.projection(map.projection));
+map.svg.select("g").selectAll("path")
+.attr("d", map.path.projection(map.projection));
+});
+
+map.legend();
+}
+
+readData();
+
+</script>
+</body>
+</html>

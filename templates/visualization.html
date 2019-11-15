@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Music Lens - Visualization</title>
+</head>
+<body background="4.png">
+
+<div id="menu">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="ex1.php">Sparql</a></li>
+<li><a href="visualization.html">Visualization</a></li>
+<li><a href="about.html">About Us </a></li>
+</ul>
+</div>
+
+<p>
+<table width="450">
+<tr>
+<td><h4>Choose an option:</h4></td>
+</tr>
+</table></br>
+<form action="../">
+<fieldset>
+<p>
+<input type="RADIO" value="country.html"     name="userChoice" id="navRadio01" checked>
+ <label for="navRadio01">View distribution of bands by country</label> 
+ <p>
+<input type="RADIO" value="track_number.html"    name="userChoice" id="navRadio02">
+        <label for="navRadio02">View song name & track number</label>
+<p>
+<input type="BUTTON"  value="Go"    onclick="ob=this.form.userChoice;for(i=0;i<ob.length;i++){
+    if(ob[i].checked){window.open(ob[i].value,'_self');};}" style="color:#FFFFF;background-color:#E0E0E5;font-family:verdana;border-style:solid;" />
+</fieldset>
+</form>
+
+</body>
+</html>
