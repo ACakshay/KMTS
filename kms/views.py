@@ -44,6 +44,16 @@ def show(request):
             ?who dbonto:genre db:Rap .
         }
         """
+    elif (searchterm == 'Rollicking'):
+        query = """
+        PREFIX db: <http://dbpedia.org/resource/>
+        PREFIX dbonto: <http://dbpedia.org/ontology/>
+        SELECT DISTINCT ?who
+        FROM <http://dbpedia.org>
+        WHERE {
+            ?who dbonto:genre db:Blues .
+        }
+        """
 
     elif (searchterm == 'Silly'):
         query = """
