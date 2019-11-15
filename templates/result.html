@@ -9,7 +9,7 @@
 <h1 style="text-align: center;color:#171717;">{{ input }}</h1>
 <ul>
 {% for result in a %}
-<a href="{{ result }}"><li>{{ result|slice:"28:" }}</li></a>
+<a href="{{ result }}" style="text-decoration: none;"> <li>{{ result|slice:"28:" }}</li></a>
 
 {% endfor %}
 
